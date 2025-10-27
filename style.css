@@ -1,0 +1,194 @@
+:root {
+  --bg: #0f172a; /* slate-900 */
+  --fg: #e2e8f0; /* slate-200 */
+  --muted: #94a3b8; /* slate-400 */
+  --accent: #22d3ee; /* cyan-400 */
+  --accent-2: #818cf8; /* indigo-400 */
+  --danger: #fb7185; /* rose-400 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--fg);
+  background: radial-gradient(1200px 800px at 70% -10%, #1f2937 0%, var(--bg) 60%);
+}
+
+.screen {
+  min-height: 100dvh;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2 {
+  margin: 8px 0 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Home */
+form#config-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.field-row label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.inputs-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inputs-inline input[type="number"] {
+  width: 110px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  color: var(--fg);
+  background: #0b1220;
+}
+
+.inputs-inline .sep {
+  color: var(--muted);
+}
+
+.hint {
+  display: block;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.form-error {
+  color: var(--danger);
+  margin-top: 6px;
+  min-height: 1.2em;
+}
+
+.note {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.primary, .ghost, .option {
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #001019;
+}
+
+.ghost {
+  color: var(--fg);
+  background: transparent;
+  border-color: #334155;
+}
+
+/* Trainer */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.deal-area {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.card-img {
+  width: min(80vw, 420px);
+  height: auto;
+  filter: drop-shadow(0 24px 40px rgba(0,0,0,0.45));
+}
+
+.quiz-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(2,6,23,0.72);
+  backdrop-filter: blur(6px);
+}
+
+.quiz-card {
+  width: min(92vw, 560px);
+  background: #0b1220;
+  border: 1px solid #1f2a44;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.guess-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 24px;
+}
+
+.adjust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.adjust-btn {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: var(--fg);
+  padding: 12px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.feedback {
+  min-height: 1.2em;
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .card-img {
+    width: min(40vw, 420px);
+  }
+}
+
+

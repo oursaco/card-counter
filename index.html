@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Card Count Trainer</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://deckofcardsapi.com" crossorigin>
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Practice Hi-Lo card counting with Bicycle-style cards. Tap to deal; get quizzed every l–r cards." />
+</head>
+<body>
+  <div id="home-screen" class="screen">
+    <h1>Card Count Trainer</h1>
+    <form id="config-form" novalidate>
+      <div class="field-row">
+        <label for="input-l">Quiz interval range [l, r]</label>
+        <div class="inputs-inline">
+          <input type="number" id="input-l" min="1" step="1" value="7" required />
+          <span class="sep">to</span>
+          <input type="number" id="input-r" min="1" step="1" value="10" required />
+        </div>
+        <small class="hint">App will quiz the running count every random l–r cards.</small>
+        <div id="form-error" class="form-error" role="alert" aria-live="assertive"></div>
+      </div>
+      <button type="submit" id="start-btn" class="primary">Start training</button>
+    </form>
+    <p class="note">Tap anywhere on the training screen to deal a random card using Bicycle-style textures.</p>
+  </div>
+
+  <div id="trainer-screen" class="screen hidden" aria-hidden="true">
+    <header class="topbar">
+      <button id="back-btn" class="ghost" aria-label="Back to home">← Home</button>
+      <div class="stats">
+        <span id="cards-seen">0</span> cards
+      </div>
+    </header>
+    <main id="deal-area" class="deal-area" role="button" tabindex="0" aria-label="Tap to deal next card">
+      <img id="card-img" class="card-img" alt="Playing card" />
+    </main>
+
+    <div id="quiz-overlay" class="quiz-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="quiz-title">
+      <div class="quiz-card">
+        <h2 id="quiz-title">What is the running count?</h2>
+        <div id="options" class="options"></div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <button id="check-btn" class="ghost">Check</button>
+        <button id="continue-btn" class="primary hidden">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+  
+</body>
+</html>
+
+
