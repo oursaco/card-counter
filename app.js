@@ -24,6 +24,7 @@
   let cardsSeen = 0;
   let nextQuizIn = 0;
   let overlayOpen = false;
+  let lastCard = null; // track last dealt card to avoid immediate repeats
 
   // Restore saved values if present
   try {
@@ -66,7 +67,11 @@
         return; // wait for quiz to finish before dealing the next card
       }
     }
-    const card = getRandomCard();
+    let card = getRandomCard();
+    while (lastCard && card.rank === lastCard.rank && card.suit === lastCard.suit) {
+      card = getRandomCard();
+    }
+    lastCard = card;
     cardImg.src = card.imgUrl;
     cardImg.alt = `${card.rank} of ${suitName(card.suit)}`;
     runningCount += hiLoDelta(card.rank);
@@ -87,6 +92,7 @@
   function startTraining() {
     runningCount = 0;
     cardsSeen = 0;
+    lastCard = null;
     cardsSeenEl.textContent = '0';
     overlayOpen = false;
     nextQuizIn = randInt(minInterval, maxInterval);
