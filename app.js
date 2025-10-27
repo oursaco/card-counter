@@ -59,19 +59,18 @@
   }
 
   function showCard() {
-    const card = getRandomCard();
-    cardImg.src = card.imgUrl;
-    cardImg.alt = `${card.rank} of ${suitName(card.suit)}`;
-    runningCount += hiLoDelta(card.rank);
-    cardsSeen += 1;
-    cardsSeenEl.textContent = String(cardsSeen);
-
     if (nextQuizIn > 0) {
       nextQuizIn -= 1;
       if (nextQuizIn === 0) {
         requestQuiz();
       }
     }
+    const card = getRandomCard();
+    cardImg.src = card.imgUrl;
+    cardImg.alt = `${card.rank} of ${suitName(card.suit)}`;
+    runningCount += hiLoDelta(card.rank);
+    cardsSeen += 1;
+    cardsSeenEl.textContent = String(cardsSeen);
   }
 
   function suitName(s) {
