@@ -189,6 +189,22 @@
     if (overlayOpen) return;
     showCard();
   });
+
+  // iOS double-tap zoom prevention while preserving pinch-zoom
+  // Only applies to touch inputs on Safari/iOS
+  let lastTouchEndTs = 0;
+  dealArea.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    // If two touchend events occur within 300ms and the touch didn't move much,
+    // preventDefault to avoid Safari's double-tap zoom. Still allow pinch-zoom.
+    if (now - lastTouchEndTs < 300) {
+      // Multiple touches indicates pinch; don't block those
+      if (e.changedTouches && e.changedTouches.length === 1) {
+        e.preventDefault();
+      }
+    }
+    lastTouchEndTs = now;
+  }, { passive: false });
   dealArea.addEventListener('keydown', (e) => {
     if (overlayOpen) return;
     if (e.key === ' ' || e.key === 'Enter') {

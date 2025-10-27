@@ -13,6 +13,8 @@
 
 html, body {
   height: 100%;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
