@@ -191,4 +191,30 @@ form#config-form {
   }
 }
 
+/* Improve touch targets on mobile */
+@media (max-width: 480px) {
+  .primary, .ghost, .option, .adjust-btn, button {
+    padding: 16px 18px;
+    min-height: 48px;
+    min-width: 48px;
+    font-size: 18px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Make quiz action buttons easier to tap */
+  .quiz-card > button {
+    display: block;
+    width: 100%;
+  }
+
+  /* Slightly larger gaps for easier separation */
+  .options {
+    gap: 14px;
+  }
+  .adjust-grid {
+    gap: 12px;
+  }
+}
+
 

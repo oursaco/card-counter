@@ -63,6 +63,7 @@
       nextQuizIn -= 1;
       if (nextQuizIn === 0) {
         requestQuiz();
+        return; // wait for quiz to finish before dealing the next card
       }
     }
     const card = getRandomCard();
@@ -194,6 +195,7 @@
     hideQuiz();
     overlayOpen = false;
     nextQuizIn = randInt(minInterval, maxInterval);
+    showCard();
   });
 
   checkBtn.addEventListener('click', () => {
